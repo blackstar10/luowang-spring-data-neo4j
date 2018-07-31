@@ -1,7 +1,7 @@
 package movies.spring.data.neo4j.repositories;
 
 import movies.spring.data.neo4j.domain.Human;
-import movies.spring.data.neo4j.result.GenderTypes;
+import movies.spring.data.neo4j.common.GenderTypes;
 import org.springframework.data.neo4j.annotation.Query;
 import org.springframework.data.neo4j.repository.Neo4jRepository;
 import org.springframework.data.repository.query.Param;
@@ -20,6 +20,6 @@ public interface HumanRepository extends Neo4jRepository<Human,Long> {
 
     Collection<Human> findByGender(@Param("gender") GenderTypes gender);
     Collection<Human> findByName(@Param("name") String name);
-    @Query("match (n:Human)-[:owns]-(i:IdCard) where i.idNumber = {idNumber} return n")
+    @Query("match (n:Human)-[:owns]->(i:IDCard) where i.idNumber = {idNumber} return n")
     Collection<Human> getHumanByIdNumber(@Param("idNumber") String idNumber);
 }

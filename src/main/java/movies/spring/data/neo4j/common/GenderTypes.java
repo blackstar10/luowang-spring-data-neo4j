@@ -1,4 +1,4 @@
-package movies.spring.data.neo4j.result;
+package movies.spring.data.neo4j.common;
 
 /**
  * Create on 2018/7/30 15:25

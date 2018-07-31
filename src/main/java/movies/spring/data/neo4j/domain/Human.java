@@ -1,6 +1,6 @@
 package movies.spring.data.neo4j.domain;
 
-import movies.spring.data.neo4j.result.GenderTypes;
+import movies.spring.data.neo4j.utils.DateUtils;
 import org.neo4j.ogm.annotation.GeneratedValue;
 import org.neo4j.ogm.annotation.Id;
 import org.neo4j.ogm.annotation.NodeEntity;
@@ -22,6 +22,8 @@ public class Human {
 
     private String name;
     private String birthday;
+
+    private Long birthdayLong;
     private String comments;
 
     private boolean isResident;
@@ -35,6 +37,7 @@ public class Human {
     public Human(String name, String birthday, String comments, boolean isResident, String gender) {
         this.name = name;
         this.birthday = birthday;
+        this.birthdayLong = DateUtils.getDateLong(birthday);
         this.comments = comments;
         this.isResident = isResident;
         this.gender = gender;
@@ -62,6 +65,7 @@ public class Human {
 
     public void setBirthday(String birthday) {
         this.birthday = birthday;
+        this.birthdayLong = DateUtils.getDateLong(birthday);
     }
 
     public String getComments() {
@@ -97,4 +101,11 @@ public class Human {
     }
 
 
+    public Long getBirthdayLong() {
+        return birthdayLong;
+    }
+
+    public void setBirthdayLong(Long birthdayLong) {
+        this.birthdayLong = birthdayLong;
+    }
 }

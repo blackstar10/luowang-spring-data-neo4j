@@ -2,7 +2,7 @@ package movies.spring.data.neo4j.services;
 
 import movies.spring.data.neo4j.domain.Human;
 import movies.spring.data.neo4j.repositories.HumanRepository;
-import movies.spring.data.neo4j.result.GenderTypes;
+import movies.spring.data.neo4j.common.GenderTypes;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -28,6 +28,10 @@ public class HumanService {
         return humanRepositiory.findByName(name);
     }
 
+    @Transactional
+    public Collection<Human> findByIdNumber(String idNumber) {
+        return humanRepositiory.getHumanByIdNumber(idNumber);
+    }
 
     @Transactional
     public Human createHuman(String name){

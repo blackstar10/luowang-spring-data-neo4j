@@ -29,6 +29,11 @@ public class HumanController {
     public Collection<Human> GetHumanByName(@RequestParam(value="name") String name){
         return humanService.findByName(name);
     }
+
+    @RequestMapping("/getByIdNumber")
+    public Collection<Human> GetHumanByIdNumber(@RequestParam(value="id") String idNumber){
+        return humanService.findByIdNumber(idNumber);
+    }
     @RequestMapping("/save")
     public Human createHumanByProperties(@RequestParam(value="name") String name){
         return humanService.createHuman(name);
