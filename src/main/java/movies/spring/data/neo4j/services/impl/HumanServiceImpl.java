@@ -43,6 +43,7 @@ public class HumanServiceImpl extends GenericService<Human> implements HumanServ
     @Override
     @Transactional
     public Human createHuman(String name) {
+        // todo 写到测试类中
         Human human = new Human();
         human.setName(name);
         human.setBirthday("1992-12-12");
