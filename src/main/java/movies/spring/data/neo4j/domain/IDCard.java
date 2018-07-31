@@ -20,7 +20,6 @@ public class IDCard extends Entity {
     }
 
     public IDCard() {
-        this.idNumber = getId().toString();
     }
 
     public String getIdNumber() {
