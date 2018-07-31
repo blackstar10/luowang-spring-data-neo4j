@@ -15,7 +15,7 @@ import java.util.Collection;
  *
  * @author sunqiu@cmss.chinamobile.com
  */
-@Repository
+
 public interface HumanRepository extends Neo4jRepository<Human,Long> {
 
     Collection<Human> findByGender(@Param("gender") GenderTypes gender);

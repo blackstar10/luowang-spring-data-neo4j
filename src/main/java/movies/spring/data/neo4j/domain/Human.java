@@ -15,11 +15,7 @@ import java.util.List;
  * @author sunqiu@cmss.chinamobile.com
  */
 @NodeEntity
-public class Human {
-    @Id
-    @GeneratedValue
-    private Long id;
-
+public class Human extends Entity {
     private String name;
     private String birthday;
 
@@ -33,7 +29,9 @@ public class Human {
     @Relationship(type = "owns")
     private List<IDCard> idCardList = new ArrayList<>();
 
-    public Human() {}
+    public Human() {
+    }
+
     public Human(String name, String birthday, String comments, boolean isResident, String gender) {
         this.name = name;
         this.birthday = birthday;
@@ -41,14 +39,6 @@ public class Human {
         this.comments = comments;
         this.isResident = isResident;
         this.gender = gender;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public String getName() {
@@ -92,7 +82,7 @@ public class Human {
         this.gender = gender;
     }
 
-    public List<IDCard>  getIdCardList() {
+    public List<IDCard> getIdCardList() {
         return idCardList;
     }
 

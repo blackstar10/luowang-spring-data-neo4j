@@ -14,7 +14,7 @@ import org.springframework.data.neo4j.repository.config.EnableNeo4jRepositories;
 @EnableNeo4jRepositories("movies.spring.data.neo4j.repositories")
 public class LBSPlatformApplication {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception{
         SpringApplication.run(LBSPlatformApplication.class, args);
     }
 }

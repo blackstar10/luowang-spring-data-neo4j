@@ -10,14 +10,18 @@ import org.neo4j.ogm.annotation.Relationship;
  *
  * @author sunqiu@cmss.chinamobile.com
  */
-public class IDCard {
-    @Id
-    @GeneratedValue
-    private Long id;
-
+public class IDCard extends Entity {
     private String idNumber;
     @Relationship(type = "owns", direction = Relationship.INCOMING)
     private Human human;
+
+    public IDCard(String idNumber) {
+        this.idNumber = idNumber;
+    }
+
+    public IDCard() {
+        this.idNumber = getId().toString();
+    }
 
     public String getIdNumber() {
         return idNumber;
@@ -26,10 +30,13 @@ public class IDCard {
     public void setIdNumber(String idNumber) {
         this.idNumber = idNumber;
     }
+
+    //加注解@JsonBackReference避免json无限循环报错
     @JsonBackReference
     public Human getHuman() {
         return human;
     }
+
     @JsonBackReference
     public void setHuman(Human human) {
         this.human = human;

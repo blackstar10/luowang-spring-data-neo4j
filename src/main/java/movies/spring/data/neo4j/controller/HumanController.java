@@ -1,8 +1,8 @@
 package movies.spring.data.neo4j.controller;
 
 import movies.spring.data.neo4j.domain.Human;
-import movies.spring.data.neo4j.repositories.HumanRepository;
 import movies.spring.data.neo4j.services.HumanService;
+import movies.spring.data.neo4j.services.Service;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -16,8 +16,8 @@ import java.util.Collection;
  */
 
 @RestController
-@RequestMapping("/rest/human")
-public class HumanController {
+@RequestMapping("/api/human")
+public class HumanController extends Controller<Human> {
 
     private final HumanService humanService;
 
@@ -25,33 +25,33 @@ public class HumanController {
         this.humanService = humanService;
     }
 
+    @Override
+    public Service<Human> getService() {
+        return humanService;
+    }
+
     @RequestMapping("/get")
-    public Collection<Human> GetHumanByName(@RequestParam(value="name") String name){
+    public Collection<Human> GetHumanByName(@RequestParam(value = "name") String name) {
         return humanService.findByName(name);
     }
 
     @RequestMapping("/getByIdNumber")
-    public Collection<Human> GetHumanByIdNumber(@RequestParam(value="id") String idNumber){
+    public Collection<Human> GetHumanByIdNumber(@RequestParam(value = "id") String idNumber) {
         return humanService.findByIdNumber(idNumber);
     }
+
     @RequestMapping("/save")
-    public Human createHumanByProperties(@RequestParam(value="name") String name){
+    public Human createHumanByProperties(@RequestParam(value = "name") String name) {
         return humanService.createHuman(name);
     }
+
     @RequestMapping("/update")
-    public Human updateHumanByProperties(@RequestParam(value="name") String name){
+    public Human updateHumanByProperties(@RequestParam(value = "name") String name) {
         return humanService.createHuman(name);
     }
+
     @RequestMapping("/delete")
-    public Human deleteHumanByProperties(@RequestParam(value="name") String name){
+    public Human deleteHumanByProperties(@RequestParam(value = "name") String name) {
         return humanService.createHuman(name);
     }
-//    @RequestMapping("/get2")
-//    public Collection<Human> GetCoderByGender(@RequestParam(value="gender") GenderTypes gender){
-//        return humanRepositiory.findByGender(gender);
-//    }
-//    @RequestMapping("/get3")
-//    public Collection<Human> GetCoderByIdNumber(@RequestParam(value="idNumber") String idNumber){
-//        return humanRepositiory.getHumanByIdNumber(idNumber);
-//    }
 }
