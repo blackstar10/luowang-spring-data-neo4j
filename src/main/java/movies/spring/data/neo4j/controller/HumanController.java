@@ -2,6 +2,7 @@ package movies.spring.data.neo4j.controller;
 
 import movies.spring.data.neo4j.domain.Human;
 import movies.spring.data.neo4j.repositories.HumanRepository;
+import movies.spring.data.neo4j.services.HumanService;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -18,17 +19,28 @@ import java.util.Collection;
 @RequestMapping("/rest/human")
 public class HumanController {
 
-    private final HumanRepository humanRepositiory;
+    private final HumanService humanService;
 
-    public HumanController(HumanRepository humanRepositiory) {
-        this.humanRepositiory = humanRepositiory;
+    public HumanController(HumanService humanService) {
+        this.humanService = humanService;
     }
 
     @RequestMapping("/get")
-    public Collection<Human> GetCoderByName(@RequestParam(value="name") String name){
-        return humanRepositiory.findByName(name);
+    public Collection<Human> GetHumanByName(@RequestParam(value="name") String name){
+        return humanService.findByName(name);
     }
-
+    @RequestMapping("/save")
+    public Human createHumanByProperties(@RequestParam(value="name") String name){
+        return humanService.createHuman(name);
+    }
+    @RequestMapping("/update")
+    public Human updateHumanByProperties(@RequestParam(value="name") String name){
+        return humanService.createHuman(name);
+    }
+    @RequestMapping("/delete")
+    public Human deleteHumanByProperties(@RequestParam(value="name") String name){
+        return humanService.createHuman(name);
+    }
 //    @RequestMapping("/get2")
 //    public Collection<Human> GetCoderByGender(@RequestParam(value="gender") GenderTypes gender){
 //        return humanRepositiory.findByGender(gender);

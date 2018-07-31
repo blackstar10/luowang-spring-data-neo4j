@@ -21,4 +21,11 @@ public enum GenderTypes {
         return message;
     }
 
+    public static GenderTypes getGenderType(int gender){
+        switch (gender) {
+            case 0:return MALE;
+            case 1:return FEMALE;
+            default:return OTHERS;
+        }
+    }
 }

@@ -1,5 +1,6 @@
 package movies.spring.data.neo4j.domain;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import org.neo4j.ogm.annotation.GeneratedValue;
 import org.neo4j.ogm.annotation.Id;
 import org.neo4j.ogm.annotation.Relationship;
@@ -25,11 +26,11 @@ public class IDCard {
     public void setIdNumber(String idNumber) {
         this.idNumber = idNumber;
     }
-
+    @JsonBackReference
     public Human getHuman() {
         return human;
     }
-
+    @JsonBackReference
     public void setHuman(Human human) {
         this.human = human;
     }
