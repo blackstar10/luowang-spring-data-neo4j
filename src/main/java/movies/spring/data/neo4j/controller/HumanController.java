@@ -30,7 +30,7 @@ public class HumanController extends Controller<Human> {
         return humanService;
     }
 
-    @RequestMapping("/get")
+    @RequestMapping("/getByName")
     public Collection<Human> GetHumanByName(@RequestParam(value = "name") String name) {
         return humanService.findByName(name);
     }
@@ -40,18 +40,18 @@ public class HumanController extends Controller<Human> {
         return humanService.findByIdNumber(idNumber);
     }
 
-    @RequestMapping("/save")
-    public Human createHumanByProperties(@RequestParam(value = "name") String name) {
-        return humanService.createHuman(name);
-    }
-
-    @RequestMapping("/update")
-    public Human updateHumanByProperties(@RequestParam(value = "name") String name) {
-        return humanService.createHuman(name);
-    }
-
-    @RequestMapping("/delete")
-    public Human deleteHumanByProperties(@RequestParam(value = "name") String name) {
-        return humanService.createHuman(name);
-    }
+//    @RequestMapping("/save")
+//    public Human createHumanByProperties(@RequestParam(value = "name") String name) {
+//        return humanService.createHuman(name);
+//    }
+//
+//    @RequestMapping("/update")
+//    public Human updateHumanByProperties(@RequestParam(value = "name") String name) {
+//        return humanService.createHuman(name);
+//    }
+//
+//    @RequestMapping("/delete")
+//    public Human deleteHumanByProperties(@RequestParam(value = "name") String name) {
+//        return humanService.createHuman(name);
+//    }
 }

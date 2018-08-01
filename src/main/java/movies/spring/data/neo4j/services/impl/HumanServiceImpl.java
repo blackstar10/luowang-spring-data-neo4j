@@ -43,13 +43,13 @@ public class HumanServiceImpl extends GenericService<Human> implements HumanServ
     @Override
     @Transactional
     public Human createHuman(String name) {
-        // todo 写到测试类中
         Human human = new Human();
-        human.setName(name);
-        human.setBirthday("1992-12-12");
-        human.addIdCard(new IDCard("01283210381"));
-        human.setGender(GenderTypes.getGenderType(0).getMessage());
-        humanRepositiory.save(human);
+        // 现在可以用过通用类Controller实现
+//        human.setName(name);
+//        human.setBirthday("1992-12-12");
+//        human.addIdCard(new IDCard("01283210381"));
+//        human.setGender(GenderTypes.getGenderType(0).getMessage());
+//        humanRepositiory.save(human);
         return human;
     }
 
