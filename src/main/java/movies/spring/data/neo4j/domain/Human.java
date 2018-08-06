@@ -1,5 +1,7 @@
 package movies.spring.data.neo4j.domain;
 
+import movies.spring.data.neo4j.domain.Entity;
+import movies.spring.data.neo4j.domain.IDCard;
 import movies.spring.data.neo4j.utils.DateUtils;
 import org.neo4j.ogm.annotation.GeneratedValue;
 import org.neo4j.ogm.annotation.Id;
@@ -26,8 +28,17 @@ public class Human extends Entity {
 
     private String gender; // todo 枚举?
 
+    private double crimePercent = 0.01;
+
     @Relationship(type = "owns")
     private List<IDCard> idCardList = new ArrayList<>();
+
+
+    @Relationship(type = "belongToType")
+    private List<HumanType> humanTypeList = new ArrayList<>();
+
+
+    private List<String> humanTypeListString = new ArrayList<>();
 
     public Human() {
     }
@@ -91,11 +102,32 @@ public class Human extends Entity {
     }
 
 
+    public List<HumanType> getHumanTypeList() {
+        return humanTypeList;
+    }
+
+    public void addHumanType(HumanType humanType) {
+        humanTypeList.add(humanType);
+    }
+
     public Long getBirthdayLong() {
         return birthdayLong;
     }
 
     public void setBirthdayLong(Long birthdayLong) {
         this.birthdayLong = birthdayLong;
+    }
+
+
+    public double getCrimePercent() {
+        return crimePercent;
+    }
+
+    public void setCrimePercent(double crimePercent) {
+        this.crimePercent = crimePercent;
+    }
+
+    public List<String> getHumanTypeListString() {
+        return humanTypeListString;
     }
 }

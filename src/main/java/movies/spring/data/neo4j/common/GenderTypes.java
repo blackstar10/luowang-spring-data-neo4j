@@ -13,7 +13,7 @@ public enum GenderTypes {
 
     private final String message;
 
-    GenderTypes(String message){
+    GenderTypes(String message) {
         this.message = message;
     }
 
@@ -21,11 +21,14 @@ public enum GenderTypes {
         return message;
     }
 
-    public static GenderTypes getGenderType(int gender){
+    public static GenderTypes getGenderType(int gender) {
         switch (gender) {
-            case 0:return MALE;
-            case 1:return FEMALE;
-            default:return OTHERS;
+            case 0:
+                return MALE;
+            case 1:
+                return FEMALE;
+            default:
+                return OTHERS;
         }
     }
 }

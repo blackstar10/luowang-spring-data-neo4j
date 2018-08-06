@@ -1,18 +1,14 @@
 package movies.spring.data.neo4j.services.impl;
 
 import movies.spring.data.neo4j.domain.Human;
-import movies.spring.data.neo4j.domain.IDCard;
 import movies.spring.data.neo4j.repositories.HumanRepository;
-import movies.spring.data.neo4j.common.GenderTypes;
 import movies.spring.data.neo4j.services.GenericService;
 import movies.spring.data.neo4j.services.HumanService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.neo4j.repository.Neo4jRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Collection;
-import java.util.Random;
 
 /**
  * Create on 2018/7/30 17:48
