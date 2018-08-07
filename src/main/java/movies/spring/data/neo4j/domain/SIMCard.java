@@ -11,6 +11,12 @@ public class SIMCard {
     private String imsi;
     private String simCardNumber;
 
+    public SIMCard(){}
+    public SIMCard(String imsi, String simCardNumber) {
+        this.imsi = imsi;
+        this.simCardNumber = simCardNumber;
+    }
+
     public String getSimCardNumber() {
         return simCardNumber;
     }

@@ -18,7 +18,7 @@ import javax.servlet.http.HttpServletResponse;
 
 
 @RestController
-@RequestMapping("/api/phone")
+@RequestMapping("/api/simcard")
 public class SIMCardController extends Controller<SIMCard>{
     private final SIMCardService simCardService;
 

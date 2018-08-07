@@ -37,22 +37,20 @@ public class IDCardRepositoryTest {
     public void setUp() {
     }
 
-
     @Test
     public void testFindByIdNumber() {
         Collection<IDCard> idCards = idCardRepository.findIDCardByIdNumber(idNumberExist);
         Assert.assertNotNull(idCards);
-        Assert.assertNotEquals(0,idCards.size());
+        Assert.assertNotEquals(0, idCards.size());
         Assert.assertNotNull(idCards.iterator().next().getHuman());
     }
-
 
     @Test
     public void testCreateLinkExistHumanFindByIdNumber() {
         //确定idNumber1的idcard不存在
         Collection<IDCard> idCards = idCardRepository.findIDCardByIdNumber(idNumber1);
         Assert.assertNotNull(idCards);
-        Assert.assertEquals(0,idCards.size());
+        Assert.assertEquals(0, idCards.size());
         //创建新的idNumber1的idcard
         IDCard idCard = new IDCard(idNumber1);
         // 从已有的idCard link取得已存在的human
@@ -62,17 +60,16 @@ public class IDCardRepositoryTest {
         idCard.getId();
         Collection<IDCard> idCards2 = idCardRepository.findIDCardByIdNumber(idNumber1);
         Assert.assertNotNull(idCards2);
-        Assert.assertNotEquals(0,idCards2.size());
+        Assert.assertNotEquals(0, idCards2.size());
         Assert.assertNotNull(idCards2.iterator().next().getHuman());
     }
-
 
     @Test
     public void testCreateLinkNotExistHumanFindByIdNumber() {
         //确定idNumber1的idcard不存在
         Collection<IDCard> idCards = idCardRepository.findIDCardByIdNumber(idNumber1);
         Assert.assertNotNull(idCards);
-        Assert.assertEquals(0,idCards.size());
+        Assert.assertEquals(0, idCards.size());
         //创建新的idNumber1的idcard
         IDCard idCard = new IDCard(idNumber1);
 
@@ -87,7 +84,7 @@ public class IDCardRepositoryTest {
         idCard.getId();
         Collection<IDCard> idCards2 = idCardRepository.findIDCardByIdNumber(idNumber1);
         Assert.assertNotNull(idCards2);
-        Assert.assertNotEquals(0,idCards2.size());
+        Assert.assertNotEquals(0, idCards2.size());
         Assert.assertNotNull(idCards2.iterator().next().getHuman());
     }
 }

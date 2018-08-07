@@ -16,6 +16,11 @@ public class Phone extends Entity {
     @Relationship(type = "installed")
     private List<SIMCard> simCards = new ArrayList<>();
 
+    public Phone(){}
+    public Phone(String imei) {
+        this.imei = imei;
+    }
+
     public String getImei() {
         return imei;
     }

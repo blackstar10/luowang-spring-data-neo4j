@@ -17,12 +17,14 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.servlet.http.HttpServletResponse;
 
 @Transactional
 public abstract class Controller<T> {
-
+    private Logger logger = LoggerFactory.getLogger(Controller.class);
     public abstract Service<T> getService();
 
     @RequestMapping(method = RequestMethod.GET)
@@ -72,7 +74,7 @@ public abstract class Controller<T> {
     public T find(Long id) {
         T entity = getService().find(id);
         if (entity != null) {
-            System.out.println("from OGM: " + entity);
+            logger.info("from OGM: " + entity);
             return entity;
         }
         throw new NotFoundException();

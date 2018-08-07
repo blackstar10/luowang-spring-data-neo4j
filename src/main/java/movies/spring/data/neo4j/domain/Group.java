@@ -8,6 +8,13 @@ package movies.spring.data.neo4j.domain;
 public class Group extends Entity {
     private String groupName;
 
+    public Group() {
+    }
+
+    public Group(String groupName) {
+        this.groupName = groupName;
+    }
+
     public String getGroupName() {
         return groupName;
     }

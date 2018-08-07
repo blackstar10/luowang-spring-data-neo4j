@@ -7,6 +7,8 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.neo4j.repository.config.EnableNeo4jRepositories;
@@ -27,6 +29,7 @@ import java.util.Collection;
 @EnableNeo4jRepositories("movies.spring.data.neo4j.repositories")
 @Transactional
 public class HumanRepositoryTest {
+    private Logger logger = LoggerFactory.getLogger(HumanRepositoryTest.class);
     private final String idNumber1 = "01283210381";
     private final String name1 = "testjava1";
     @Autowired
@@ -50,22 +53,23 @@ public class HumanRepositoryTest {
             idCard1.setHuman(human);
         }
         humanRepository.save(human);
-        System.out.println(human.getId().toString());
+        logger.info(human.getId().toString());
         Collection<Human> humans2 = humanRepository.getHumanByIdNumber(idNumber1);
 
-        System.out.println(humans2.size());
+        logger.info(String.valueOf(humans2.size()));
     }
 
     @Test
     public void testFindByIdNumber() {
         Collection<Human> humans = humanRepository.getHumanByIdNumber(idNumber1);
         Assert.assertNotNull(humans);
-        Assert.assertNotEquals(0,humans.size());
+        Assert.assertNotEquals(0, humans.size());
     }
+
     @Test
     public void testFindByName() {
         Collection<Human> humans = humanRepository.findByName(name1);
         Assert.assertNotNull(humans);
-        Assert.assertNotEquals(0,humans.size());
+        Assert.assertNotEquals(0, humans.size());
     }
 }
