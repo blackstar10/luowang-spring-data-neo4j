@@ -20,6 +20,9 @@ public interface HumanRepository extends Neo4jRepository<Human,Long> {
 
     Collection<Human> findByGender(@Param("gender") GenderTypes gender);
     Collection<Human> findByName(@Param("name") String name);
+
     @Query("match (n:Human)-[:owns]->(i:IDCard) where i.idNumber = {idNumber} return n")
     Collection<Human> getHumanByIdNumber(@Param("idNumber") String idNumber);
+    @Query("match (n:Human)-[:owns]->(i:Phone)-[:installed]->(j:SIMCard) where j.simCardNumber = {simCardNumber} return n")
+    Collection<Human> getHumanBySIMCardNumber(@Param("simCardNumber") String simCardNumber);
 }

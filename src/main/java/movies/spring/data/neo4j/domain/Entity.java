@@ -10,8 +10,6 @@
  */
 package movies.spring.data.neo4j.domain;
 
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.JsonProperty;
 import org.neo4j.ogm.annotation.GeneratedValue;
 import org.neo4j.ogm.annotation.Id;
 import org.neo4j.ogm.annotation.NodeEntity;
@@ -23,6 +21,10 @@ public abstract class Entity {
     @GeneratedValue
     private Long id;
 
+    private Long createTime = System.currentTimeMillis();
+    private Long updateTime = System.currentTimeMillis();
+    private boolean isNodeDeleted;
+
     public Long getId() {
         return id;
     }
@@ -31,8 +33,34 @@ public abstract class Entity {
         this.id = id;
     }
 
+    public Long getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(Long createTime) {
+        this.createTime = createTime;
+    }
+
+    public Long getUpdateTime() {
+        return updateTime;
+    }
+
+    public void setUpdateTime(Long updateTime) {
+        this.updateTime = updateTime;
+    }
+
+    public void updateTime() {
+        this.updateTime = System.currentTimeMillis();;
+    }
+
+    public boolean isNodeDeleted() {
+        return isNodeDeleted;
+    }
+
+    public void setNodeDeleted(boolean nodeDeleted) {
+        isNodeDeleted = nodeDeleted;
+    }
     /**
-     * FIXME:
      * This is the default mechanism for providing entity identity to the OGM
      * <p>
      * It is required because the OGM can currently accept objects with NO
@@ -55,4 +83,5 @@ public abstract class Entity {
     public int hashCode() {
         return (id == null) ? -1 : id.hashCode();
     }
+
 }

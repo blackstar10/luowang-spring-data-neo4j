@@ -3,6 +3,9 @@ package movies.spring.data.neo4j.domain;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import org.neo4j.ogm.annotation.Relationship;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Create on 2018/7/30 10:07
  *
@@ -13,6 +16,8 @@ public class IDCard extends Entity {
     @Relationship(type = "owns", direction = Relationship.INCOMING)
     private Human human;
 
+    @Relationship(type = "applied")
+    private List<SIMCard> simCards = new ArrayList<>();
     public IDCard(String idNumber) {
         this.idNumber = idNumber;
     }
@@ -37,5 +42,16 @@ public class IDCard extends Entity {
     @JsonBackReference
     public void setHuman(Human human) {
         this.human = human;
+    }
+
+    public List<SIMCard> getSimCards() {
+        return simCards;
+    }
+
+    public void setSimCards(List<SIMCard> simCards) {
+        this.simCards = simCards;
+    }
+    public void addSimCard(SIMCard simCard){
+        this.simCards.add(simCard);
     }
 }

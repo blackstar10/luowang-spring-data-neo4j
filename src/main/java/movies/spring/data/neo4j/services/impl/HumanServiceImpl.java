@@ -50,6 +50,11 @@ public class HumanServiceImpl extends GenericService<Human> implements HumanServ
     }
 
     @Override
+    public Collection<Human> findBySIMCardNumber(String simCardNumber) {
+        return humanRepositiory.getHumanBySIMCardNumber(simCardNumber);
+    }
+
+    @Override
     public Neo4jRepository<Human, Long> getRepository() {
         return humanRepositiory;
     }

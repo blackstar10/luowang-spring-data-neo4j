@@ -2,7 +2,7 @@ package movies.spring.data.neo4j.domain;
 
 /**
  * Create on 2018/8/6 16:26
- *
+ * 人员类型
  *
  * @author sunqiu@cmss.chinamobile.com
  */

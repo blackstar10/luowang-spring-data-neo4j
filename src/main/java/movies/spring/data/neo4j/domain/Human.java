@@ -1,5 +1,6 @@
 package movies.spring.data.neo4j.domain;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import movies.spring.data.neo4j.domain.Entity;
 import movies.spring.data.neo4j.domain.IDCard;
 import movies.spring.data.neo4j.utils.DateUtils;
@@ -26,7 +27,7 @@ public class Human extends Entity {
 
     private boolean isResident;
 
-    private String gender; // todo 枚举?
+    private String gender; // 在json中使用枚举，还要再转成Neo4j的Node?
 
     private double crimePercent = 0.01;
 
@@ -37,6 +38,15 @@ public class Human extends Entity {
     @Relationship(type = "belongToType")
     private List<HumanType> humanTypeList = new ArrayList<>();
 
+    @Relationship(type = "belongToGroup")
+    private List<Group> groupList = new ArrayList<>();
+
+    // @JsonBackReference
+    @Relationship(type = "isFamilyNumberWith", direction = Relationship.UNDIRECTED)
+    private List<Human> familyList = new ArrayList<>();
+
+    @Relationship(type = "owns")
+    private List<Phone> phoneList = new ArrayList<>();
 
     private List<String> humanTypeListString = new ArrayList<>();
 
@@ -129,5 +139,37 @@ public class Human extends Entity {
 
     public List<String> getHumanTypeListString() {
         return humanTypeListString;
+    }
+
+    public List<Group> getGroupList() {
+        return groupList;
+    }
+
+    public void setGroupList(List<Group> groupList) {
+        this.groupList = groupList;
+    }
+
+    public void addGroupList(Group group) {
+        groupList.add(group);
+    }
+
+    public List<Human> getFamilyList() {
+        return familyList;
+    }
+
+    public void addFamilyMember(Human human) {
+        familyList.add(human);
+    }
+
+    public List<Phone> getPhoneList() {
+        return phoneList;
+    }
+
+    public void setPhoneList(List<Phone> phoneList) {
+        this.phoneList = phoneList;
+    }
+
+    public void addPhone(Phone phone){
+        this.phoneList.add(phone);
     }
 }

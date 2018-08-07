@@ -40,6 +40,11 @@ public class HumanController extends Controller<Human> {
         return humanService.findByIdNumber(idNumber);
     }
 
+    @RequestMapping("/getByPhoneNumber")
+    public Collection<Human> GetHumanByPhoneNumber(@RequestParam(value = "phoneNumber") String PhoneNumber) {
+        return humanService.findBySIMCardNumber(PhoneNumber);
+    }
+
 //    @RequestMapping("/save")
 //    public Human createHumanByProperties(@RequestParam(value = "name") String name) {
 //        return humanService.createHuman(name);
