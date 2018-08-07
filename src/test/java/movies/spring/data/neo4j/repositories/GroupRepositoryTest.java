@@ -35,10 +35,10 @@ public class GroupRepositoryTest {
     @Before
     public void setUp() {
         Group group1 = new Group("testCompany");
-        Human human1 = new Human("human1","1999-01-02","",true,"male");
-        Human human2 = new Human("human2","1999-04-07","",true,"female");
-        Human human3 = new Human("human3","1999-03-22","",false,"female");
-        Human human4 = new Human("human4","1999-02-12","",false,"male");
+        Human human1 = new Human("human1", "1999-01-02", "", true, "male");
+        Human human2 = new Human("human2", "1999-04-07", "", true, "female");
+        Human human3 = new Human("human3", "1999-03-22", "", false, "female");
+        Human human4 = new Human("human4", "1999-02-12", "", false, "male");
         human1.addGroupList(group1);
         human2.addGroupList(group1);
         human3.addGroupList(group1);
@@ -48,20 +48,25 @@ public class GroupRepositoryTest {
         humanRepository.save(human4);
     }
 
-
     @Test
-    public void testRelationship(){
-        int count = 0;
-        for (Human human : humanRepository.findByName("human1")){
-            Assert.assertEquals(1,human.getGroupList().size());
-            Assert.assertEquals("testCompany",human.getGroupList().get(0).getGroupName());
-            count +=1;
-        }
-        Assert.assertEquals(1,count);
+    public void testGroupExist() {
+        Assert.assertEquals(1, groupRepository.findByGroupName("testCompany").size());
+        Assert.assertEquals(0, groupRepository.findByGroupName("testCompany2").size());
     }
 
     @Test
-    public void testAddRelationship(){
+    public void testRelationship() {
+        int count = 0;
+        for (Human human : humanRepository.findByName("human1")) {
+            Assert.assertEquals(1, human.getGroupList().size());
+            Assert.assertEquals("testCompany", human.getGroupList().get(0).getGroupName());
+            count += 1;
+        }
+        Assert.assertEquals(1, count);
+    }
+
+    @Test
+    public void testAddRelationship() {
         for (Human human : humanRepository.findByName("human1")) {
             Group group2 = new Group("testCompany2");
             human.addGroupList(group2);
@@ -70,12 +75,12 @@ public class GroupRepositoryTest {
 
         int count = 0;
         for (Human human : humanRepository.findByName("human1")) {
-            Assert.assertEquals(2,human.getGroupList().size());
+            Assert.assertEquals(2, human.getGroupList().size());
             for (Group group : human.getGroupList()) {
                 logger.info(group.getGroupName());
             }
-            count +=1;
+            count += 1;
         }
-        Assert.assertEquals(1,count);
+        Assert.assertEquals(1, count);
     }
 }
