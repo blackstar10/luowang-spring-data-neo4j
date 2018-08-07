@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.HttpServletResponse;
+
 /**
  * Create on 2018/8/7 14:24
  *
@@ -29,12 +31,14 @@ public class SIMCardController extends Controller<SIMCard>{
     }
 
     @RequestMapping("/getByImsi")
-    public SIMCard GetGroupByIMSI(@RequestParam(value = "imsi") String imsi) {
+    public SIMCard GetGroupByIMSI(@RequestParam(value = "imsi") String imsi, final HttpServletResponse response) {
+        setHeaders(response);
         return simCardService.findByImsi(imsi);
     }
 
     @RequestMapping("/getByPhoneNumber")
-    public SIMCard GetGroupByName(@RequestParam(value = "phoneNumber") String phoneNumber) {
+    public SIMCard GetGroupByName(@RequestParam(value = "phoneNumber") String phoneNumber, final HttpServletResponse response) {
+        setHeaders(response);
         return simCardService.findBySimCardNumber(phoneNumber);
     }
 }

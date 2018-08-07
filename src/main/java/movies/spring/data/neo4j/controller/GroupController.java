@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.HttpServletResponse;
 import java.util.Collection;
 
 /**
@@ -31,7 +32,8 @@ public class GroupController extends Controller<Group> {
     }
 
     @RequestMapping("/getByGroupName")
-    public Collection<Group> GetGroupByName(@RequestParam(value = "name") String name) {
+    public Collection<Group> GetGroupByName(@RequestParam(value = "name") String name, final HttpServletResponse response) {
+        setHeaders(response);
         return groupService.findByGroupName(name);
     }
 }

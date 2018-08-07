@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.HttpServletResponse;
 import java.util.Collection;
 
 /**
@@ -32,7 +33,8 @@ public class IDCardController extends Controller<IDCard> {
     }
 
     @RequestMapping("/getByIdNumber")
-    public Collection<IDCard> GetHumanByIdNumber(@RequestParam(value = "id") String idNumber) {
+    public Collection<IDCard> GetHumanByIdNumber(@RequestParam(value = "id") String idNumber, final HttpServletResponse response) {
+        setHeaders(response);
         return idCardService.findByIdNumber(idNumber);
     }
 }

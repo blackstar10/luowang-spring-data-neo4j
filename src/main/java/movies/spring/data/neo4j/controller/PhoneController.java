@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.HttpServletResponse;
 import java.util.Collection;
 
 /**
@@ -30,7 +31,8 @@ public class PhoneController extends Controller<Phone> {
     }
 
     @RequestMapping("/getByimei")
-    public Phone GetGroupByName(@RequestParam(value = "imei") String imei) {
+    public Phone GetGroupByName(@RequestParam(value = "imei") String imei, final HttpServletResponse response) {
+        setHeaders(response);
         return phoneService.findByImei(imei);
     }
 }

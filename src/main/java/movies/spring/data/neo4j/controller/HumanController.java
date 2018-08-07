@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.HttpServletResponse;
 import java.util.Collection;
 
 /**
@@ -31,17 +32,20 @@ public class HumanController extends Controller<Human> {
     }
 
     @RequestMapping("/getByName")
-    public Collection<Human> GetHumanByName(@RequestParam(value = "name") String name) {
+    public Collection<Human> GetHumanByName(@RequestParam(value = "name") String name, final HttpServletResponse response) {
+        setHeaders(response);
         return humanService.findByName(name);
     }
 
     @RequestMapping("/getByIdNumber")
-    public Collection<Human> GetHumanByIdNumber(@RequestParam(value = "id") String idNumber) {
+    public Collection<Human> GetHumanByIdNumber(@RequestParam(value = "id") String idNumber, final HttpServletResponse response) {
+        setHeaders(response);
         return humanService.findByIdNumber(idNumber);
     }
 
     @RequestMapping("/getByPhoneNumber")
-    public Collection<Human> GetHumanByPhoneNumber(@RequestParam(value = "phoneNumber") String PhoneNumber) {
+    public Collection<Human> GetHumanByPhoneNumber(@RequestParam(value = "phoneNumber") String PhoneNumber, final HttpServletResponse response) {
+        setHeaders(response);
         return humanService.findBySIMCardNumber(PhoneNumber);
     }
 
