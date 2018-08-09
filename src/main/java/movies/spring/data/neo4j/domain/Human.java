@@ -17,7 +17,6 @@ import java.util.List;
  *
  * @author sunqiu@cmss.chinamobile.com
  */
-@NodeEntity
 public class Human extends Entity {
     private String name;
     private String birthday;

@@ -1,5 +1,7 @@
 package movies.spring.data.neo4j.domain;
 
+import org.neo4j.ogm.annotation.NodeEntity;
+
 /**
  * Create on 2018/8/7 10:05
  *

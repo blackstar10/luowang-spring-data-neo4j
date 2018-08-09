@@ -10,7 +10,7 @@
  */
 package movies.spring.data.neo4j.controller;
 
-import movies.spring.data.neo4j.Exception.NotFoundException;
+import movies.spring.data.neo4j.exception.NotFoundException;
 import movies.spring.data.neo4j.services.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.PathVariable;
