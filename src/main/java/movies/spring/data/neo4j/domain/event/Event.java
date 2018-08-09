@@ -12,7 +12,7 @@ import java.util.List;
 public abstract class Event extends Entity {
     private String eventName;
     private Long startTime;
-    private long endTime;
+    private Long endTime;
     @Relationship(type = "occurredIn")
     private Location eventLocation;
 
@@ -39,11 +39,11 @@ public abstract class Event extends Entity {
         this.startTime = startTime;
     }
 
-    public long getEndTime() {
+    public Long getEndTime() {
         return endTime;
     }
 
-    public void setEndTime(long endTime) {
+    public void setEndTime(Long endTime) {
         this.endTime = endTime;
     }
 
