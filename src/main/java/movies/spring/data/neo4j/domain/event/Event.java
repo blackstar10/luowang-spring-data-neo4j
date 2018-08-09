@@ -9,10 +9,10 @@ import org.neo4j.ogm.annotation.Relationship;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class Event extends Entity {
-    private String eventName;
-    private Long startTime;
-    private Long endTime;
+public class Event extends Entity {
+    String eventName;
+    Long startTime = System.currentTimeMillis();
+    Long endTime = System.currentTimeMillis();
     @Relationship(type = "occurredIn")
     private Location eventLocation;
 
@@ -22,6 +22,18 @@ public abstract class Event extends Entity {
 
     @Relationship(type = "relatedTo", direction = Relationship.UNDIRECTED)
     private List<Event> eventListRelated = new ArrayList<>();
+
+
+    public Event(){}
+    public Event(String eventName){
+        this.eventName = eventName;
+    }
+
+    public Event(String eventName, Long startTime, Long endTime){
+        this.eventName = eventName;
+        this.startTime = startTime;
+        this.endTime = endTime;
+    }
 
     public String getEventName() {
         return eventName;

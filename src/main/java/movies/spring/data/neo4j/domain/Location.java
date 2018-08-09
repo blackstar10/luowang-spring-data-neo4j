@@ -4,10 +4,14 @@ import movies.spring.data.neo4j.geohash.GeoHashUtil;
 import movies.spring.data.neo4j.geohash.LatLng;
 import org.neo4j.ogm.annotation.Relationship;
 
+/**
+ * @author sunqiu
+ */
 public class Location extends Entity {
 
     private String locationName;
     private LatLng latLng;
+
     @Relationship(type = "locatedOn")
     private GeoHashGrid geoHashGrid;
 
@@ -36,4 +40,13 @@ public class Location extends Entity {
     public void setLatLng(LatLng latLng) {
         this.latLng = latLng;
     }
+
+    public GeoHashGrid getGeoHashGrid() {
+        return geoHashGrid;
+    }
+
+    public void setGeoHashGrid(GeoHashGrid geoHashGrid) {
+        this.geoHashGrid = geoHashGrid;
+    }
+
 }

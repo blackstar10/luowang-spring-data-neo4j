@@ -8,4 +8,14 @@ import java.util.List;
 
 public class CriminalCase extends Event {
 
+    public CriminalCase() {
+    }
+
+    public CriminalCase(String eventName, Long startTime, Long endTime) {
+        super(eventName, startTime, endTime);
+    }
+
+    public CriminalCase(String eventName) {
+        super(eventName);
+    }
 }

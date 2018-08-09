@@ -8,7 +8,7 @@ import movies.spring.data.neo4j.services.GenericService;
 import org.springframework.data.neo4j.repository.Neo4jRepository;
 import org.springframework.stereotype.Service;
 
-@Service("groupService")
+@Service("eventService")
 public class EventServiceImpl extends GenericService<Event> implements EventService {
     private final EventRepository eventRepository;
 

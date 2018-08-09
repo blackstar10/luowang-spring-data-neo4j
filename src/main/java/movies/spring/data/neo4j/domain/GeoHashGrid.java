@@ -28,4 +28,18 @@ public class GeoHashGrid extends Entity {
     public void setGeoHashCode(String geoHashCode) {
         this.geoHashCode = geoHashCode;
     }
+
+    public List<GeoHashGrid> getGeoHashGridList() {
+        return geoHashGridList;
+    }
+
+    public void setGeoHashGridList(List<GeoHashGrid> geoHashGridList) {
+        this.geoHashGridList = geoHashGridList;
+    }
+
+    public void addGeoHashGrid(GeoHashGrid geoHashGrid){
+        if (geoHashGrid != null) {
+            geoHashGridList.add(geoHashGrid);
+        }
+    }
 }
