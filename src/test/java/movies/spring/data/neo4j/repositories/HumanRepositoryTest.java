@@ -38,7 +38,6 @@ public class HumanRepositoryTest {
     @Before
     public void setUp() {
         Human human = new Human();
-        //todo 判断是否为空
         Collection<Human> humans = humanRepository.getHumanByIdNumber(idNumber1);
         if (humans != null && humans.size() > 0) {
             human = humans.iterator().next();

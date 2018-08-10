@@ -10,6 +10,7 @@ import org.neo4j.ogm.annotation.Relationship;
 public class Location extends Entity {
 
     private String locationName;
+    // todo
     private LatLng latLng;
 
     @Relationship(type = "locatedOn")
@@ -20,8 +21,11 @@ public class Location extends Entity {
 
     public Location(String locationName, double lat, double lng) {
         this.locationName = locationName;
-        this.latLng = new LatLng(lat, lng);
-        this.geoHashGrid = new GeoHashGrid(GeoHashUtil.getGeoHashBase32(GeoHashUtil.HASH_LENGTH, lat, lng));
+    }
+    public Location(String locationName, LatLng ll) {
+        this.locationName = locationName;
+//        this.latLng = ll;
+//        this.geoHashGrid = new GeoHashGrid(GeoHashUtil.getGeoHashBase32(GeoHashUtil.HASH_LENGTH, ll.getLat(), ll.getLng()));
     }
 
 
