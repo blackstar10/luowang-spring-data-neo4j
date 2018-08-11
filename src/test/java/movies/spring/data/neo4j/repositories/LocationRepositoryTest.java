@@ -46,6 +46,7 @@ public class LocationRepositoryTest {
     public void getLocationByGeohash() {
         Location location = locationRepository.getLocationByGeohash(geoHashCode);
         Assert.assertEquals(locationName1, location.getLocationName());
-        Assert.assertEquals(new LatLng(39.949547, 116.411497), location.getLatLng());
+        Assert.assertEquals(39.949547, location.getLat());
+        Assert.assertEquals(116.411497, location.getLng());
     }
 }
