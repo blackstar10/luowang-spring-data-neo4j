@@ -26,7 +26,8 @@ public class Human extends Entity {
 
     private boolean isResident;
 
-    private String gender; // 在json中使用枚举，还要再转成Neo4j的Node?
+    // 在json中使用枚举，还要再转成Neo4j的Node?
+    private String gender;
 
     private double crimePercent = 0.01;
 
