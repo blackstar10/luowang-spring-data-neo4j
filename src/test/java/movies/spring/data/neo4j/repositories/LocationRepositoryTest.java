@@ -32,7 +32,7 @@ public class LocationRepositoryTest {
     @Autowired
     private LocationRepository locationRepository;
     private final String geoHashCode = GeoHashUtil.getGeoHashBase32(GeoHashUtil.HASH_LENGTH, 39.949547, 116.411497);
-    private final String locationName1 = "地点1";
+    private final String locationName1 = "地点11";
 
     @Before
     public void setUp() {
@@ -46,7 +46,5 @@ public class LocationRepositoryTest {
     public void getLocationByGeohash() {
         Location location = locationRepository.getLocationByGeohash(geoHashCode);
         Assert.assertEquals(locationName1, location.getLocationName());
-        Assert.assertEquals(39.949547, location.getLat());
-        Assert.assertEquals(116.411497, location.getLng());
     }
 }

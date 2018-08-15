@@ -33,24 +33,22 @@ public class EventRepositoryTest {
 
     @Before
     public void setUp() {
-        Event e1= new CriminalCase("犯罪案件1");
-        Event e11= new AbnormalPowerOffEvent("犯罪案件11");
-        Event e12= new AbnormalPowerOffEvent("犯罪案件12");
-        Event e13= new SignTraceEvent("犯罪案件13");
+        Event e1= new CriminalCase("犯罪案件a");
+        Event e11= new AbnormalPowerOffEvent("犯罪案件aa");
+        Event e12= new AbnormalPowerOffEvent("犯罪案件ab");
+        Event e13= new SignTraceEvent("犯罪案件ac");
         e1.addEventRelated(e11);
         e1.addEventRelated(e12);
         e1.addEventRelated(e13);
         eventRepository.save(e1);
-
-        CriminalCase e2= new CriminalCase("犯罪案件2");
     }
 
     @Test
     public void testEventRelationShip() {
-        Collection<Event> event1 = eventRepository.findByEventName("犯罪案件1");
+        Collection<Event> event1 = eventRepository.findByEventName("犯罪案件a");
         Assert.assertEquals(1,event1.size());
         Assert.assertEquals(3,event1.iterator().next().getEventListRelated().size());
-        Collection<Event> event12 = eventRepository.findByEventName("犯罪案件12");
+        Collection<Event> event12 = eventRepository.findByEventName("犯罪案件ab");
         Assert.assertEquals(1,event12.size());
         Assert.assertEquals(1,event12.iterator().next().getEventListRelated().size());
     }

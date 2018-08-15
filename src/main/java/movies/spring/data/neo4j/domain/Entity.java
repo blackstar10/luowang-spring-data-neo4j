@@ -13,14 +13,16 @@ package movies.spring.data.neo4j.domain;
 import org.neo4j.ogm.annotation.GeneratedValue;
 import org.neo4j.ogm.annotation.Id;
 import org.neo4j.ogm.annotation.NodeEntity;
+import org.neo4j.ogm.annotation.Properties;
 
 @NodeEntity
-public abstract class Entity {
+public class Entity {
 
     @Id
     @GeneratedValue
     private Long id;
 
+    @Properties
     private Long createTime = System.currentTimeMillis();
     private Long updateTime = System.currentTimeMillis();
     private boolean isNodeDeleted;
