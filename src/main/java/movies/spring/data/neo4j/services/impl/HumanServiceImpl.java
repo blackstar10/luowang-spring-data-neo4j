@@ -1,6 +1,7 @@
 package movies.spring.data.neo4j.services.impl;
 
 import movies.spring.data.neo4j.domain.Human;
+import movies.spring.data.neo4j.domain.result.RingData;
 import movies.spring.data.neo4j.repositories.HumanRepository;
 import movies.spring.data.neo4j.services.GenericService;
 import movies.spring.data.neo4j.services.HumanService;
@@ -52,6 +53,11 @@ public class HumanServiceImpl extends GenericService<Human> implements HumanServ
     @Override
     public Collection<Human> findBySIMCardNumber(String simCardNumber) {
         return humanRepositiory.getHumanBySIMCardNumber(simCardNumber);
+    }
+
+    @Override
+    public Collection<RingData> getRingDataGenerated() {
+        return humanRepositiory.getRingDataGenerated();
     }
 
     @Override

@@ -1,6 +1,8 @@
 package movies.spring.data.neo4j.controller;
 
 import movies.spring.data.neo4j.domain.Human;
+import movies.spring.data.neo4j.domain.result.RingData;
+import movies.spring.data.neo4j.repositories.HumanRepository;
 import movies.spring.data.neo4j.services.HumanService;
 import movies.spring.data.neo4j.services.Service;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -49,6 +51,11 @@ public class HumanController extends Controller<Human> {
         return humanService.findBySIMCardNumber(PhoneNumber);
     }
 
+    @RequestMapping("/getRing")
+    public Collection<RingData> getRingDataGenerated(final HttpServletResponse response) {
+        setHeaders(response);
+        return humanService.getRingDataGenerated();
+    }
 //    @RequestMapping("/save")
 //    public Human createHumanByProperties(@RequestParam(value = "name") String name) {
 //        return humanService.createHuman(name);

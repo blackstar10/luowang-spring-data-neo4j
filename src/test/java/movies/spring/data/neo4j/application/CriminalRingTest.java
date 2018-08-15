@@ -53,7 +53,6 @@ public class CriminalRingTest {
     public void setUp() {
         // 犯罪闭环，发现团伙作案可能性
 
-        /**
         // 以39.949547, 116.411497为中心点，创建9个网格
         GeoHashGrid geoHashGrid = new GeoHashGrid(geoHashCode);
         List<String> list = GeoHashUtil.getGeoHashBase32For9(GeoHashUtil.HASH_LENGTH, 39.949547, 116.411497);
@@ -151,7 +150,7 @@ public class CriminalRingTest {
         // 保存到neo4j
         eventRepository.save(e1);
         eventRepository.save(e2);
-         **/
+
     }
 
 
