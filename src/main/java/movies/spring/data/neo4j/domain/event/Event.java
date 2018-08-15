@@ -10,9 +10,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Event extends Entity {
-    String eventName;
-    Long startTime = System.currentTimeMillis();
-    Long endTime = System.currentTimeMillis();
+    private String eventName;
+    private Long startTime = System.currentTimeMillis();
+    private Long endTime = System.currentTimeMillis();
     @Relationship(type = "occurredIn")
     private Location eventLocation;
 

@@ -1,5 +1,6 @@
 package movies.spring.data.neo4j.domain;
 
+import movies.spring.data.neo4j.domain.relationship.InstallSim;
 import org.neo4j.ogm.annotation.Relationship;
 
 import java.util.ArrayList;
@@ -14,7 +15,7 @@ public class Phone extends Entity {
     private String imei;
 
     @Relationship(type = "installed")
-    private List<SIMCard> simCards = new ArrayList<>();
+    private List<InstallSim> installSims = new ArrayList<>();
 
     public Phone(){}
     public Phone(String imei) {
@@ -29,15 +30,15 @@ public class Phone extends Entity {
         this.imei = imei;
     }
 
-    public List<SIMCard> getSimCards() {
-        return simCards;
+    public List<InstallSim> getInstallSims() {
+        return installSims;
     }
 
-    public void setSimCards(List<SIMCard> simCards) {
-        this.simCards = simCards;
+    public void setInstallSims(List<InstallSim> installSims) {
+        this.installSims = installSims;
     }
 
-    public void addSimCard(SIMCard simCard) {
-        simCards.add(simCard);
+    public void addSimCard(InstallSim installSim) {
+        installSims.add(installSim);
     }
 }
