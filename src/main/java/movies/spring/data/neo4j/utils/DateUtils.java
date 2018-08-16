@@ -21,6 +21,15 @@ public class DateUtils {
         }
     }
 
+    public static Date getDate(String dateStr) {
+        try {
+            Calendar cal = Calendar.getInstance();
+            cal.setTime(format.parse(dateStr));
+            return cal.getTime();
+        } catch (Exception e) {
+            return Calendar.getInstance().getTime();
+        }
+    }
     public static Long getDateLong(String dateStr) {
         try {
             Calendar cal = Calendar.getInstance();

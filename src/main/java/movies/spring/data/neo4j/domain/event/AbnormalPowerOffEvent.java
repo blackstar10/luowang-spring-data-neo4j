@@ -1,5 +1,7 @@
 package movies.spring.data.neo4j.domain.event;
 
+import java.util.Date;
+
 public class AbnormalPowerOffEvent extends Event {
     public AbnormalPowerOffEvent() {
     }
@@ -8,7 +10,7 @@ public class AbnormalPowerOffEvent extends Event {
         super(eventName);
     }
 
-    public AbnormalPowerOffEvent(String eventName, Long startTime, Long endTime) {
+    public AbnormalPowerOffEvent(String eventName, Date startTime, Date endTime) {
         super(eventName, startTime, endTime);
     }
 }

@@ -9,8 +9,10 @@ import org.neo4j.ogm.annotation.GeneratedValue;
 import org.neo4j.ogm.annotation.Id;
 import org.neo4j.ogm.annotation.NodeEntity;
 import org.neo4j.ogm.annotation.Relationship;
+import org.neo4j.ogm.annotation.typeconversion.DateLong;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -22,7 +24,8 @@ public class Human extends Entity {
     private String name;
     private String birthday;
 
-    private Long birthdayLong;
+    @DateLong
+    private Date birthdayLong;
     private String comments;
 
     private boolean isResident;
@@ -56,7 +59,7 @@ public class Human extends Entity {
     public Human(String name, String birthday, String comments, boolean isResident, String gender) {
         this.name = name;
         this.birthday = birthday;
-        this.birthdayLong = DateUtils.getDateLong(birthday);
+        this.birthdayLong = DateUtils.getDate(birthday);
         this.comments = comments;
         this.isResident = isResident;
         this.gender = gender;
@@ -76,7 +79,7 @@ public class Human extends Entity {
 
     public void setBirthday(String birthday) {
         this.birthday = birthday;
-        this.birthdayLong = DateUtils.getDateLong(birthday);
+        this.birthdayLong = DateUtils.getDate(birthday);
     }
 
     public String getComments() {
@@ -120,11 +123,11 @@ public class Human extends Entity {
         humanTypeList.add(humanType);
     }
 
-    public Long getBirthdayLong() {
+    public Date getBirthdayLong() {
         return birthdayLong;
     }
 
-    public void setBirthdayLong(Long birthdayLong) {
+    public void setBirthdayLong(Date birthdayLong) {
         this.birthdayLong = birthdayLong;
     }
 

@@ -5,14 +5,19 @@ import movies.spring.data.neo4j.domain.GeoHashGrid;
 import movies.spring.data.neo4j.domain.Human;
 import movies.spring.data.neo4j.domain.Location;
 import org.neo4j.ogm.annotation.Relationship;
+import org.neo4j.ogm.annotation.typeconversion.DateLong;
 
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 public class Event extends Entity {
     private String eventName;
-    private Long startTime = System.currentTimeMillis();
-    private Long endTime = System.currentTimeMillis();
+    @DateLong
+    private Date startTime = Calendar.getInstance().getTime();
+    @DateLong
+    private Date endTime = Calendar.getInstance().getTime();
     @Relationship(type = "occurredIn")
     private Location eventLocation;
 
@@ -29,7 +34,7 @@ public class Event extends Entity {
         this.eventName = eventName;
     }
 
-    public Event(String eventName, Long startTime, Long endTime){
+    public Event(String eventName, Date startTime, Date endTime){
         this.eventName = eventName;
         this.startTime = startTime;
         this.endTime = endTime;
@@ -43,19 +48,19 @@ public class Event extends Entity {
         this.eventName = eventName;
     }
 
-    public Long getStartTime() {
+    public Date getStartTime() {
         return startTime;
     }
 
-    public void setStartTime(Long startTime) {
+    public void setStartTime(Date startTime) {
         this.startTime = startTime;
     }
 
-    public Long getEndTime() {
+    public Date getEndTime() {
         return endTime;
     }
 
-    public void setEndTime(Long endTime) {
+    public void setEndTime(Date endTime) {
         this.endTime = endTime;
     }
 

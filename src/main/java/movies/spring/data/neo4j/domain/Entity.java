@@ -14,6 +14,10 @@ import org.neo4j.ogm.annotation.GeneratedValue;
 import org.neo4j.ogm.annotation.Id;
 import org.neo4j.ogm.annotation.NodeEntity;
 import org.neo4j.ogm.annotation.Properties;
+import org.neo4j.ogm.annotation.typeconversion.DateLong;
+
+import java.util.Calendar;
+import java.util.Date;
 
 @NodeEntity
 public class Entity {
@@ -22,9 +26,10 @@ public class Entity {
     @GeneratedValue
     private Long id;
 
-    @Properties
-    private Long createTime = System.currentTimeMillis();
-    private Long updateTime = System.currentTimeMillis();
+    @DateLong
+    private Date createTime = Calendar.getInstance().getTime();
+    @DateLong
+    private Date updateTime = Calendar.getInstance().getTime();
     private boolean isNodeDeleted;
 
     public Long getId() {
@@ -35,24 +40,24 @@ public class Entity {
         this.id = id;
     }
 
-    public Long getCreateTime() {
+    public Date getCreateTime() {
         return createTime;
     }
 
-    public void setCreateTime(Long createTime) {
+    public void setCreateTime(Date createTime) {
         this.createTime = createTime;
     }
 
-    public Long getUpdateTime() {
+    public Date getUpdateTime() {
         return updateTime;
     }
 
-    public void setUpdateTime(Long updateTime) {
+    public void setUpdateTime(Date updateTime) {
         this.updateTime = updateTime;
     }
 
     public void updateTime() {
-        this.updateTime = System.currentTimeMillis();;
+        this.updateTime = Calendar.getInstance().getTime();
     }
 
     public boolean isNodeDeleted() {

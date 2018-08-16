@@ -5,6 +5,7 @@ import movies.spring.data.neo4j.domain.Location;
 import org.neo4j.ogm.annotation.Relationship;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class SignTraceEvent extends Event {
@@ -19,7 +20,7 @@ public class SignTraceEvent extends Event {
         super(eventName);
     }
 
-    public SignTraceEvent(String eventName, Long startTime, Long endTime) {
+    public SignTraceEvent(String eventName, Date startTime, Date endTime) {
         super(eventName, startTime, endTime);
     }
 
