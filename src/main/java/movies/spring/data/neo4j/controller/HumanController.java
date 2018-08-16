@@ -56,10 +56,10 @@ public class HumanController extends Controller<Human> {
         setHeaders(response);
         return humanService.getRingDataGenerated();
     }
-//    @RequestMapping("/save")
-//    public Human createHumanByProperties(@RequestParam(value = "name") String name) {
-//        return humanService.createHuman(name);
-//    }
+    @RequestMapping("/save")
+    public Human createHumanByProperties(@RequestParam(value = "name") String name) {
+        return humanService.createHuman(name);
+    }
 //
 //    @RequestMapping("/update")
 //    public Human updateHumanByProperties(@RequestParam(value = "name") String name) {

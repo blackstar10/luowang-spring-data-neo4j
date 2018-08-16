@@ -1,6 +1,9 @@
 package movies.spring.data.neo4j.services.impl;
 
+import movies.spring.data.neo4j.common.GenderTypes;
+import movies.spring.data.neo4j.common.HumanTypes;
 import movies.spring.data.neo4j.domain.Human;
+import movies.spring.data.neo4j.domain.IDCard;
 import movies.spring.data.neo4j.domain.result.RingData;
 import movies.spring.data.neo4j.repositories.HumanRepository;
 import movies.spring.data.neo4j.services.GenericService;
@@ -41,12 +44,14 @@ public class HumanServiceImpl extends GenericService<Human> implements HumanServ
     @Transactional
     public Human createHuman(String name) {
         Human human = new Human();
-        // 现在可以用过通用类Controller实现
-//        human.setName(name);
-//        human.setBirthday("1992-12-12");
-//        human.addIdCard(new IDCard("01283210381"));
-//        human.setGender(GenderTypes.getGenderType(0).getMessage());
-//        humanRepositiory.save(human);
+        human.setName(name);
+        human.setBirthday("1982-07-10");
+        human.addIdCard(new IDCard("99912313211"));
+        human.setGender(GenderTypes.getGenderType(1).getMessage());
+        human.addLabels(HumanTypes.BLACKLIST.getType());
+        human.addLabels(HumanTypes.UNDEFINEDLIST.getType());
+        human.addLabels("TestHumanList1");
+        humanRepositiory.save(human);
         return human;
     }
 

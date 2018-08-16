@@ -6,22 +6,22 @@ package movies.spring.data.neo4j.common;
  * @author sunqiu@cmss.chinamobile.com
  */
 public enum HumanTypes {
+    UNDEFINEDLIST("UndefinedList"),
+    BLACKLIST("BlackList"),
+    WHITELIST("WhiteList"),
+    REDLIST("RedList"),
+    PORN_PERSON_LIST("PornPersonList"),
+    GAMBLE_PERSON_LIST("GamblePersonList"),
+    DRAG_PERSON_LIST("DragPersonList");
 
-    UNDEFINEDLIST(0),
-    BLACKLIST(1),
-    WHITELIST(2),
-    REDLIST(3),
-    PORN_PERSON_LIST(4),
-    GAMBLE_PERSON_LIST(5),
-    DRAG_PERSON_LIST(6);
 
-    private int humanType;
+    private final String humanType;
 
-    HumanTypes(final int humanType) {
+    HumanTypes(String humanType) {
         this.humanType = humanType;
     }
 
-    public int val(){
-        return this.humanType;
+    public String getType() {
+        return humanType;
     }
 }

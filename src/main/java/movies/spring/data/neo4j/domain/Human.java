@@ -5,10 +5,7 @@ import movies.spring.data.neo4j.domain.Entity;
 import movies.spring.data.neo4j.domain.IDCard;
 import movies.spring.data.neo4j.domain.relationship.PlainRelationship;
 import movies.spring.data.neo4j.utils.DateUtils;
-import org.neo4j.ogm.annotation.GeneratedValue;
-import org.neo4j.ogm.annotation.Id;
-import org.neo4j.ogm.annotation.NodeEntity;
-import org.neo4j.ogm.annotation.Relationship;
+import org.neo4j.ogm.annotation.*;
 import org.neo4j.ogm.annotation.typeconversion.DateLong;
 
 import java.util.ArrayList;
@@ -30,6 +27,8 @@ public class Human extends Entity {
 
     private boolean isResident;
 
+    @Labels
+    private List<String> labels = new ArrayList<>();
     // 在json中使用枚举，还要再转成Neo4j的Node?
     private String gender;
 
@@ -37,10 +36,6 @@ public class Human extends Entity {
 
     @Relationship(type = "owns")
     private List<IDCard> idCardList = new ArrayList<>();
-
-
-    @Relationship(type = PlainRelationship.belongToType)
-    private List<HumanType> humanTypeList = new ArrayList<>();
 
     @Relationship(type = "belongToGroup")
     private List<Group> groupList = new ArrayList<>();
@@ -115,15 +110,6 @@ public class Human extends Entity {
         idCardList.add(idCard);
     }
 
-
-    public List<HumanType> getHumanTypeList() {
-        return humanTypeList;
-    }
-
-    public void addHumanType(HumanType humanType) {
-        humanTypeList.add(humanType);
-    }
-
     public Date getBirthdayLong() {
         return birthdayLong;
     }
@@ -175,5 +161,19 @@ public class Human extends Entity {
 
     public void addPhone(Phone phone){
         this.phoneList.add(phone);
+    }
+
+    public List<String> getLabels() {
+        return labels;
+    }
+
+    public Human setLabels(List<String> labels) {
+        this.labels = labels;
+        return this;
+    }
+
+    public Human addLabels(String label) {
+        labels.add(label);
+        return this;
     }
 }
