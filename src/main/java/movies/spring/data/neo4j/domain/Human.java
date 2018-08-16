@@ -3,6 +3,7 @@ package movies.spring.data.neo4j.domain;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import movies.spring.data.neo4j.domain.Entity;
 import movies.spring.data.neo4j.domain.IDCard;
+import movies.spring.data.neo4j.domain.relationship.PlainRelationship;
 import movies.spring.data.neo4j.utils.DateUtils;
 import org.neo4j.ogm.annotation.GeneratedValue;
 import org.neo4j.ogm.annotation.Id;
@@ -34,7 +35,7 @@ public class Human extends Entity {
     private List<IDCard> idCardList = new ArrayList<>();
 
 
-    @Relationship(type = "belongToType")
+    @Relationship(type = PlainRelationship.belongToType)
     private List<HumanType> humanTypeList = new ArrayList<>();
 
     @Relationship(type = "belongToGroup")
