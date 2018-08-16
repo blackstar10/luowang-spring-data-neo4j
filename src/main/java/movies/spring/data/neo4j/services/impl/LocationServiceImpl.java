@@ -8,8 +8,11 @@ import movies.spring.data.neo4j.services.LocationService;
 import org.springframework.data.neo4j.repository.Neo4jRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.Collection;
+
 @Service("locationService")
-public class LocationServiceImpl extends GenericService<Location> implements LocationService {
+public class LocationServiceImpl extends GenericService<Location>
+        implements LocationService {
     private final LocationRepository locationRepository;
 
     public LocationServiceImpl(LocationRepository locationRepository) {
@@ -19,6 +22,11 @@ public class LocationServiceImpl extends GenericService<Location> implements Loc
     @Override
     public Neo4jRepository<Location, Long> getRepository() {
         return locationRepository;
+    }
+
+    @Override
+    public Collection<Location> findByLocationName(String locationName) {
+        return locationRepository.findByLocationName(locationName);
     }
 
     @Override

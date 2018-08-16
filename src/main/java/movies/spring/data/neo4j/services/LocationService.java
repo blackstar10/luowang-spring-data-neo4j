@@ -3,7 +3,10 @@ package movies.spring.data.neo4j.services;
 import movies.spring.data.neo4j.domain.Location;
 import org.springframework.data.repository.query.Param;
 
-public interface LocationService extends Service<Location> {
+import java.util.Collection;
 
-    Location getLocationByGeohash(@Param("geoHashCode") String geoHashCode);
+public interface LocationService extends Service<Location> {
+    
+    Collection<Location> findByLocationName(String locationName);
+    Location getLocationByGeohash(String geoHashCode);
 }

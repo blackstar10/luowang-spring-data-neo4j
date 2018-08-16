@@ -12,8 +12,8 @@ import java.util.Collection;
 @Repository
 public interface LocationRepository extends Neo4jRepository<Location,Long> {
 
+    Collection<Location> findByLocationName(@Param("locationName") String locationName);
     @Query("match (n:Location)-[:locatedOn]->(i:GeoHashGrid) " +
-            "where i.geoHashCode = {geoHashCode} " +
-            "return n")
+            "where i.geoHashCode = {geoHashCode} return n")
     Location getLocationByGeohash(@Param("geoHashCode") String geoHashCode);
 }

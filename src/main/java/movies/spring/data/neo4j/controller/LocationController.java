@@ -26,7 +26,8 @@ public class LocationController extends Controller<Location> {
     }
 
     @RequestMapping("/getByGeoHash")
-    public Location GetHumanByIdNumber(@RequestParam(value = "geohash") String geohash, final HttpServletResponse response) {
+    public Location GetHumanByIdNumber(@RequestParam(value = "geohash") String geohash,
+                                       final HttpServletResponse response) {
         setHeaders(response);
         return locationService.getLocationByGeohash(geohash);
     }
